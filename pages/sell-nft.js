@@ -64,7 +64,7 @@ export default function Home() {
             onSuccess: () => handleListSuccess(),
             onError: (error) => {
                 console.log(error),
-            },
+            }
         })
     }
 
