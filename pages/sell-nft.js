@@ -7,7 +7,7 @@ import { ethers } from "ethers"
 import nftAbi from "../constants/BasicNft.json"
 import nftMarketplaceAbi from "../constants/NftMarketplace.json"
 import { useMoralis, useWeb3Contract } from "react-moralis"
-import {networkMapping} from "../constants/networkMapping.json"
+import { networkMapping } from "../constants/networkMapping.json"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -63,8 +63,8 @@ export default function Home() {
             params: listOptions,
             onSuccess: () => handleListSuccess(),
             onError: (error) => {
-                console.log(error),
-            }
+                console.log(error)
+            },
         })
     }
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useWeb3Contract, useMoralis } from "react-moralis"
 import nftMarketplaceAbi from "../constants/NftMarketplace.json"
-import nftAbi from "../constatns/BasicNft.json"
+import nftAbi from "../constants/BasicNft.json"
 import Image from "next/image"
 import { Card } from "web3uikit"
 import { ethers } from "ethers"
@@ -38,7 +38,7 @@ export default function NFTBox({
         setShowModal(false)
     }
 
-    const { runContractFunctions: getTokenURI } = useWeb3Contract({
+    const { runContractFunction: getTokenURI } = useWeb3Contract({
         abi: nftAbi,
         contractAddress: nftAddress,
         functionName: "tokenURI",
@@ -58,17 +58,17 @@ export default function NFTBox({
             // IPFS Gateway: A server that will return IPFS files from a "normal" URL.
             const requestURL = tokenURI.replace(
                 "ipfs://",
-                "https://ifps/io/ipfs/"
+                "https://ipfs.io/ipfs/"
             )
             const tokenURIResponse = await (await fetch(requestURL)).json()
-            const imageURI = tokenURLResponse.image
+            const imageURI = tokenURIResponse.image
             const imageURIURL = imageURI.replace(
                 "ipfs://",
                 "https://ipfs.io/ipfs/"
             )
             setImageURI(imageURIURL)
-            setTokenName(tokenURLResponse.name)
-            setTokenDescription(tokenURLResponse.description)
+            setTokenName(tokenURIResponse.name)
+            setTokenDescription(tokenURIResponse.description)
         }
     }
 
